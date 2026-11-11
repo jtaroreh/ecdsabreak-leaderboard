@@ -79,11 +79,27 @@ for low, high, least in ((2.1e7, 5.4e7, 4), (3e9, 2e11, 4), (1e2, 1e9, 4), (0.94
     ticks = build.log_ticks(low, high)
     assert least <= len(ticks) <= 8 and all(low <= t <= high for t in ticks), f"log ticks fit {low}..{high}: {ticks}"
 
-chart = build.frontier_chart([row(entry("p", "on-front", 3, "e1", 90, 100)), row(entry("q", "behind", 3, "e2", 95, 500), layer=2)], LINE)
-assert chart.count('class="pt front"') == 1 and chart.count('class="pt back"') == 1 and chart.count('class="pt ref"') == 1, "the chart marks the frontier, the rest, and the reference"
-assert 'class="step" d="M' in chart, "the chart draws the frontier"
-twins = build.frontier_chart([row(entry("p", "a", 3, "e1", 90, 100)), row(entry("q", "b", 3, "e2", 90, 100))], LINE)
+for low, high in ((0, 5.4e7), (0, 1.74e11), (0, 106), (0, 1.06)):
+    ticks = build.linear_ticks(low, high)
+    assert 4 <= len(ticks) <= 8 and ticks[0] == 0 and all(t <= high for t in ticks), f"linear ticks fit {low}..{high} from 0: {ticks}"
+
+ranked = [row(entry("p", "on-front", 3, "e1", 90, 100)), row(entry("q", "behind", 3, "e2", 95, 500), layer=2)]
+for x_scale in build.SCALES:
+    for y_scale in build.SCALES:
+        svg = build.frontier_svg(ranked, LINE, x_scale, y_scale)
+        assert svg.count('class="pt front"') == 1 and svg.count('class="pt back"') == 1 and svg.count('class="pt ref"') == 1, f"the {x_scale}-{y_scale} chart marks the frontier, the rest, and the reference"
+        assert 'class="step" d="M' in svg, f"the {x_scale}-{y_scale} chart draws the frontier"
+        assert f"qubit-time ({x_scale} scale)" in svg and f"T ({y_scale} scale)" in svg, "each axis names its scale"
+assert '>0</text>' in build.frontier_svg(ranked, LINE, "linear", "linear"), "a linear axis starts at 0"
+assert '>0</text>' not in build.frontier_svg(ranked, LINE, "log", "log"), "a log axis doesn't"
+chart = build.frontier_chart(ranked, LINE)
+svgs = chart.split("<svg ")[1:]
+shown = [s for s in svgs if "hidden" not in s.split(">", 1)[0] and 'role="group"' in s]
+assert len([s for s in svgs if 'role="group"' in s]) == 4 and len(shown) == 1, "the chart holds all four pairs of scales and shows one"
+assert 'data-x="log" data-y="log"' in shown[0], "log on both axes is shown by default"
+assert chart.count('aria-pressed="true"') == 2 and chart.count("<button") == 4, "each axis has a log and a linear switch, log pressed"
+twins = build.frontier_svg([row(entry("p", "a", 3, "e1", 90, 100)), row(entry("q", "b", 3, "e2", 90, 100))], LINE, "log", "log")
 assert twins.count('class="pt front"') == 1 and "p · a" in twins and "q · b" in twins, "entries at the same spot share one mark and one tooltip"
 alone = build.frontier_chart([], LINE)
-assert 'class="step"' not in alone and 'class="pt ref"' in alone, "an empty board charts only the reference"
+assert 'class="step"' not in alone and alone.count('class="pt ref"') == 4, "an empty board charts only the reference"
 print("ok")

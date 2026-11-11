@@ -68,6 +68,13 @@ tr.behind td{color:var(--muted)}
 .chart{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 8px 4px}
 .chart .plot{overflow-x:auto;padding-bottom:6px}
 .chart .plot svg{display:block;width:100%;min-width:520px;height:auto;font-size:13px;font-variant-numeric:tabular-nums}
+.chart .plot svg[hidden],.scales[hidden]{display:none}
+.scales{display:flex;flex-wrap:wrap;gap:6px 18px;margin:4px 8px 6px;color:var(--muted);font-size:13px}
+.switch{display:inline-flex;align-items:center;gap:8px}
+.switch button{font:inherit;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:2px 10px;cursor:pointer}
+.switch button:first-of-type{border-radius:6px 0 0 6px}
+.switch button:last-of-type{border-radius:0 6px 6px 0;margin-left:-1px}
+.switch button[aria-pressed="true"]{color:var(--fg);background:var(--bg);border-color:var(--muted);position:relative}
 .chart .grid{stroke:var(--line);stroke-dasharray:3 4}
 .chart .tick{fill:var(--muted)}
 .chart .axis{fill:var(--muted);font-size:14px}
@@ -111,7 +118,15 @@ if(y<0)y=r.bottom-c.top+6;
 tip.style.left=Math.max(0,x)+'px';tip.style.top=y+'px';};
 for(const g of chart.querySelectorAll('.pt')){g.addEventListener('pointerenter',()=>show(g));g.addEventListener('focus',()=>show(g));
 g.addEventListener('pointerleave',hide);g.addEventListener('blur',hide);}
-chart.querySelector('.plot').addEventListener('scroll',hide);}
+chart.querySelector('.plot').addEventListener('scroll',hide);
+const scales=chart.querySelector('.scales'),pick={x:'log',y:'log'};
+const apply=()=>{for(const b of scales.querySelectorAll('button'))b.setAttribute('aria-pressed',pick[b.dataset.axis]===b.dataset.scale);
+for(const s of chart.querySelectorAll('.plot>svg'))s.toggleAttribute('hidden',!(s.dataset.x===pick.x&&s.dataset.y===pick.y));hide();};
+try{Object.assign(pick,JSON.parse(localStorage.getItem('frontier-scales'))||{});}catch(e){}
+for(const b of scales.querySelectorAll('button'))b.addEventListener('click',()=>{pick[b.dataset.axis]=b.dataset.scale;
+try{localStorage.setItem('frontier-scales',JSON.stringify(pick));}catch(e){}apply();});
+if(!chart.querySelector(`.plot>svg[data-x="${pick.x}"][data-y="${pick.y}"]`))Object.assign(pick,{x:'log',y:'log'});
+scales.hidden=false;apply();}
 """
 CHART = {"width": 888, "height": 400, "left": 64, "right": 32, "top": 20, "bottom": 50}
 TICK_STEPS = ((1,), (1, 2, 5), (1, 1.5, 2, 3, 4, 5, 6, 8), (1, 1.2, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9))
@@ -211,12 +226,33 @@ def log_ticks(low, high):
     return ticks[:: -(-len(ticks) // 8)]
 
 
+def linear_ticks(low, high):
+    """Multiples of the coarsest 1, 2 or 5 step between `low` and `high` that gives at least four."""
+    for d in range(math.floor(math.log10(high - low)), -13, -1):
+        for m in (5, 2, 1):
+            step = m * 10**d
+            ticks = [k * step for k in range(math.ceil(low / step), math.floor(high / step) + 1)]
+            if len(ticks) >= 4:
+                return ticks[:: -(-len(ticks) // 8)]
+    return [low, high]
+
+
 def log_scale(values, start, end):
     """A log scale over `values`, padded 6% each side, mapping onto pixels `start`..`end`."""
     low, high = math.log10(min(values)), math.log10(max(values))
     pad = max(high - low, 0.1) * 0.06
     low, high = low - pad, high + pad
     return (lambda v: start + (math.log10(v) - low) / (high - low) * (end - start)), 10**low, 10**high
+
+
+def linear_scale(values, start, end):
+    """A linear scale from 0 to the largest of `values` padded 6%, mapping onto pixels `start`..`end`."""
+    high = max(values) * 1.06
+    return (lambda v: start + v / high * (end - start)), 0, high
+
+
+SCALES = {"log": (log_scale, log_ticks), "linear": (linear_scale, linear_ticks)}
+DEFAULT_SCALES = ("log", "log")
 
 
 def entry_label(entry):
@@ -234,21 +270,22 @@ def frontier_path(front, x, y, top, right):
     return "".join(path)
 
 
-def frontier_chart(ranked, line):
-    """T against qubit-time on log scales: the frontier, every other ranked entry, and the reference."""
+def frontier_svg(ranked, line, x_scale, y_scale):
+    """T against qubit-time, each axis on `x_scale` or `y_scale` ("log" or "linear"): the frontier, every other ranked entry, and the reference."""
     w, h = CHART["width"], CHART["height"]
     left, right, top, bottom = CHART["left"], w - CHART["right"], CHART["top"], h - CHART["bottom"]
     entries = [row["entry"] for row in ranked]
-    x, x_low, x_high = log_scale([e["qubit_time"] for e in [*entries, line]], left, right)
-    y, y_low, y_high = log_scale([e["lowered_t"] for e in [*entries, line]], bottom, top)
+    (x_map, x_ticks), (y_map, y_ticks) = SCALES[x_scale], SCALES[y_scale]
+    x, x_low, x_high = x_map([e["qubit_time"] for e in [*entries, line]], left, right)
+    y, y_low, y_high = y_map([e["lowered_t"] for e in [*entries, line]], bottom, top)
 
     parts = []
-    for v in log_ticks(x_low, x_high):
+    for v in x_ticks(x_low, x_high):
         parts.append(f'<line class="grid" x1="{x(v):.1f}" x2="{x(v):.1f}" y1="{top}" y2="{bottom}"/><text class="tick" x="{x(v):.1f}" y="{bottom + 18}" text-anchor="middle">{compact(v)}</text>')
-    for v in log_ticks(y_low, y_high):
+    for v in y_ticks(y_low, y_high):
         parts.append(f'<line class="grid" x1="{left}" x2="{right}" y1="{y(v):.1f}" y2="{y(v):.1f}"/><text class="tick" x="{left - 8}" y="{y(v) + 4:.1f}" text-anchor="end">{compact(v)}</text>')
-    parts.append(f'<text class="axis" x="{(left + right) / 2}" y="{h - 6}" text-anchor="middle">qubit-time (log scale)</text>')
-    parts.append(f'<text class="axis" transform="rotate(-90)" x="{-(top + bottom) / 2}" y="14" text-anchor="middle">T (log scale)</text>')
+    parts.append(f'<text class="axis" x="{(left + right) / 2}" y="{h - 6}" text-anchor="middle">qubit-time ({x_scale} scale)</text>')
+    parts.append(f'<text class="axis" transform="rotate(-90)" x="{-(top + bottom) / 2}" y="14" text-anchor="middle">T ({y_scale} scale)</text>')
     parts.append(f'<rect class="zone" x="{left}" y="{y(line["lowered_t"]):.1f}" width="{x(line["qubit_time"]) - left:.1f}" height="{bottom - y(line["lowered_t"]):.1f}"/>')
     parts.append(f'<text class="zone-label" x="{left + 8}" y="{bottom - 8}">Beats the reference</text>')
     front = [row["entry"] for row in ranked if row["layer"] == 1]
@@ -271,14 +308,26 @@ def frontier_chart(ranked, line):
         said = "; ".join(f'{p["who"]}: {p["t"]}, {p["qt"]}' for p in tip)
         parts.append(f'<g class="pt {c["kind"]}" tabindex="0" role="img" aria-label="{html.escape(said)}" data-tip="{html.escape(json.dumps(tip))}"><circle class="hit" cx="{cx:.1f}" cy="{cy:.1f}" r="12"/>{dot}</g>')
 
+    shown = "" if (x_scale, y_scale) == DEFAULT_SCALES else " hidden"
+    return f'<svg viewBox="0 0 {w} {h}" role="group" aria-label="Ranked entries by T and qubit-time" data-x="{x_scale}" data-y="{y_scale}"{shown}>{"".join(parts)}</svg>'
+
+
+def frontier_chart(ranked, line):
+    """The frontier on every pair of scales, the log-log one shown, with buttons that switch each axis."""
+    svgs = "".join(frontier_svg(ranked, line, x_scale, y_scale) for x_scale in SCALES for y_scale in SCALES)
+    switches = "".join(
+        f'<span class="switch" role="group" aria-label="{name} axis">{name}'
+        + "".join(f'<button type="button" data-axis="{axis}" data-scale="{s}" aria-pressed="{str(s == default).lower()}">{s.capitalize()}</button>' for s in SCALES)
+        + "</span>"
+        for axis, name, default in (("x", "qubit-time", DEFAULT_SCALES[0]), ("y", "T", DEFAULT_SCALES[1]))
+    )
     legend = (
         '<span><svg viewBox="0 0 16 12"><path d="M0 2H8V10H16" fill="none" stroke="var(--frontier)" stroke-width="2"/></svg>Frontier</span>'
         '<span><svg viewBox="0 0 16 12"><circle cx="8" cy="6" r="5" fill="var(--frontier)"/></svg>On the frontier</span>'
         '<span><svg viewBox="0 0 16 12"><circle cx="8" cy="6" r="4.5" fill="none" stroke="var(--muted)" stroke-width="1.5"/></svg>Other ranked entry</span>'
         '<span><svg viewBox="0 0 16 12"><path d="M8 0l6 6l-6 6l-6-6z" fill="var(--ref)"/></svg>Reference</span>'
     )
-    svg = f'<svg viewBox="0 0 {w} {h}" role="group" aria-label="Ranked entries by T and qubit-time">{"".join(parts)}</svg>'
-    return f'<div class="chart"><div class="plot">{svg}</div><div class="legend">{legend}</div><div class="tip" hidden></div></div>'
+    return f'<div class="chart"><div class="scales" hidden>{switches}</div><div class="plot">{svgs}</div><div class="legend">{legend}</div><div class="tip" hidden></div></div>'
 
 
 def page(data, now):
