@@ -102,4 +102,10 @@ twins = build.frontier_svg([row(entry("p", "a", 3, "e1", 90, 100)), row(entry("q
 assert twins.count('class="pt front"') == 1 and "p · a" in twins and "q · b" in twins, "entries at the same spot share one mark and one tooltip"
 alone = build.frontier_chart([], LINE)
 assert 'class="step"' not in alone and alone.count('class="pt ref"') == 4, "an empty board charts only the reference"
+final = build.page({**data(), "phase": "closed", "notes_checked": True}, NOW)
+assert "Final standings, audited Saturday 2026-11-14." in final and "Nothing is final" not in final, "the frozen page says it is final"
+assert "competition-archive" in final and "Notes aren" not in final, "the frozen page names the archive it was checked against"
+assert 'http-equiv="refresh"' not in final and "<time class=\"when\" data-age" not in final, "the frozen page neither reloads nor shows an update time"
+live_closed = build.page({**data(), "phase": "closed", "notes_checked": False}, NOW)
+assert "Nothing is final" in live_closed and "Final standings" not in live_closed, "a closed board read without notes isn't called final"
 print("ok")

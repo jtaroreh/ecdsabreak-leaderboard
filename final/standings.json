@@ -1,0 +1,972 @@
+{
+ "url": "https://ecdsabreak.taroreh.com",
+ "board_status": "OPEN_UNQUALIFIED",
+ "board_revision": "35377b1f80451cfc053c2d3c669b07760e9dd7b16de8e0774ca1f739cead55ba",
+ "phase": "closed",
+ "reads": 40,
+ "backoffs": [],
+ "notes_checked": true,
+ "most_built_on": [
+  [
+   "jack",
+   22
+  ],
+  [
+   "mike",
+   16
+  ],
+  [
+   "elliot",
+   8
+  ],
+  [
+   "aodhfionn",
+   5
+  ],
+  [
+   "joel",
+   3
+  ]
+ ],
+ "ranked": [
+  {
+   "entry": {
+    "user": "aodhfionn",
+    "method": "comp-abdowns-pr37-a667d3704df8",
+    "round_id": 37,
+    "evaluation": "eval-b72fbc1b8f653457",
+    "lowered_t": 20487264,
+    "qubit_time": 123384786944,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794551902
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "elliot/comp-2elliot-pr35-de951de1b2ed"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr42-146c8b7007a0",
+    "round_id": 39,
+    "evaluation": "eval-2b371c0a216dad0d",
+    "lowered_t": 20621048,
+    "qubit_time": 107146072064,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794556483
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "joel/comp-jtaroreh-pr32-4a1ba85d53ee"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr28-9ffef68b2198",
+    "round_id": 29,
+    "evaluation": "eval-e33538b53fb612ce",
+    "lowered_t": 22295273,
+    "qubit_time": 75676717056,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794432657
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr10-0e70e4252785"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr34-5f1a2f1ffb6b",
+    "round_id": 34,
+    "evaluation": "eval-4471f7945b01d64b",
+    "lowered_t": 22743770,
+    "qubit_time": 21932968792,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794470781
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr31-8008ba6fcd11"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr33-a52fea0077ba",
+    "round_id": 33,
+    "evaluation": "eval-6f7051d9dc9ee1a4",
+    "lowered_t": 23815386,
+    "qubit_time": 19423177084,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794465191
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr31-8008ba6fcd11"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr43-ebe5008b07e8",
+    "round_id": 40,
+    "evaluation": "eval-214644c6483c73ea",
+    "lowered_t": 30830422,
+    "qubit_time": 17672490196,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794556518
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr11-aa4faf39addb"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr25-8622c471dd0e",
+    "round_id": 26,
+    "evaluation": "eval-c56c6e9c9e3a9385",
+    "lowered_t": 33138742,
+    "qubit_time": 15634285058,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794402094
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr11-aa4faf39addb"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr44-ee3fedbfde00",
+    "round_id": 41,
+    "evaluation": "eval-e7908149c60bc586",
+    "lowered_t": 35498022,
+    "qubit_time": 15005147220,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794556623
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr11-aa4faf39addb"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr26-495680103df3",
+    "round_id": 27,
+    "evaluation": "eval-20a5bede862fe396",
+    "lowered_t": 37299654,
+    "qubit_time": 12898229200,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794402114
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr11-aa4faf39addb"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr45-2aa47ad82f02",
+    "round_id": 41,
+    "evaluation": "eval-dd70faf57d2418a9",
+    "lowered_t": 39658934,
+    "qubit_time": 11884314576,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794556623
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr11-aa4faf39addb"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr20-3c02070acac6",
+    "round_id": 21,
+    "evaluation": "eval-f5f6e6d0e8325652",
+    "lowered_t": 43228941,
+    "qubit_time": 8046529435,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794355484
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "elliot/comp-2elliot-pr19-f7824658045e",
+    "aodhfionn/comp-abdowns-pr18-b9b464adf474",
+    "elliot/comp-2elliot-pr12-b2284da7c963"
+   ],
+   "pst_day": "2026-11-10"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr12-b2284da7c963",
+    "round_id": 15,
+    "evaluation": "eval-f0911c642194dfc5",
+    "lowered_t": 49799519,
+    "qubit_time": 6686681250,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794266978
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr8-c4994f3b4b23",
+    "jack/comp-iwnlcern-pr7-cd542f862356"
+   ],
+   "pst_day": "2026-11-09"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr22-8fd153c37691",
+    "round_id": 23,
+    "evaluation": "eval-5100e4daff5edc3e",
+    "lowered_t": 49901572,
+    "qubit_time": 6260767854,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794391434
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "elliot/comp-2elliot-pr12-b2284da7c963"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr23-8ca189baa587",
+    "round_id": 24,
+    "evaluation": "eval-68d2e1e94fa382e9",
+    "lowered_t": 50135869,
+    "qubit_time": 3612446935,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794397968
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "aodhfionn/comp-abdowns-pr18-b9b464adf474"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "aodhfionn",
+    "method": "comp-abdowns-pr36-6b16441c41f3",
+    "round_id": 36,
+    "evaluation": "eval-114f0ab0828f309a",
+    "lowered_t": 50363908,
+    "qubit_time": 2379469432,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794551763
+   },
+   "layer": 1,
+   "note": "filed",
+   "built_on": [
+    "aodhfionn/comp-abdowns-pr18-b9b464adf474",
+    "mike/comp-ab-godder-pr29-dcb7883b4b7a"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr35-de951de1b2ed",
+    "round_id": 35,
+    "evaluation": "eval-1d5e64eb34953c32",
+    "lowered_t": 20568604,
+    "qubit_time": 123628195840,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794547843
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "joel/comp-jtaroreh-pr32-4a1ba85d53ee"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr21-f4f241177e0f",
+    "round_id": 22,
+    "evaluation": "eval-761fb23c4909ef7d",
+    "lowered_t": 22349551,
+    "qubit_time": 78807494656,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794382293
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "aodhfionn/comp-abdowns-pr14-87074c1cc523"
+   ],
+   "pst_day": "2026-11-10"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr30-6213eb166730",
+    "round_id": 30,
+    "evaluation": "eval-8cb71db8dd3f2bd3",
+    "lowered_t": 22750784,
+    "qubit_time": 23529146760,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794441068
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr28-9ffef68b2198"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr31-8008ba6fcd11",
+    "round_id": 31,
+    "evaluation": "eval-18e30ae6181f7877",
+    "lowered_t": 24123456,
+    "qubit_time": 20125917630,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794441087
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr28-9ffef68b2198"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr19-f7824658045e",
+    "round_id": 20,
+    "evaluation": "eval-751ab4bfbdb1f3b6",
+    "lowered_t": 43251061,
+    "qubit_time": 8152606870,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794350545
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "aodhfionn/comp-abdowns-pr18-b9b464adf474",
+    "elliot/comp-2elliot-pr12-b2284da7c963"
+   ],
+   "pst_day": "2026-11-10"
+  },
+  {
+   "entry": {
+    "user": "aodhfionn",
+    "method": "comp-abdowns-pr18-b9b464adf474",
+    "round_id": 19,
+    "evaluation": "eval-0292b91f72600cc6",
+    "lowered_t": 50135869,
+    "qubit_time": 3739352040,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794310290
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "aodhfionn/comp-abdowns-pr17-5e2669d9d3d0"
+   ],
+   "pst_day": "2026-11-10"
+  },
+  {
+   "entry": {
+    "user": "jude",
+    "method": "comp-judecutler-pr41-7f48c75eb8a1",
+    "round_id": 38,
+    "evaluation": "eval-929941810b86ce9e",
+    "lowered_t": 50262919,
+    "qubit_time": 3716949155,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794555846
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "reference-c4"
+   ],
+   "pst_day": "2026-11-12"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr29-dcb7883b4b7a",
+    "round_id": 28,
+    "evaluation": "eval-ab95875a84d3330c",
+    "lowered_t": 50461355,
+    "qubit_time": 2969714492,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794431268
+   },
+   "layer": 2,
+   "note": "filed",
+   "built_on": [
+    "aodhfionn/comp-abdowns-pr18-b9b464adf474"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "joel",
+    "method": "comp-jtaroreh-pr32-4a1ba85d53ee",
+    "round_id": 32,
+    "evaluation": "eval-b869bdec4a37d904",
+    "lowered_t": 20727056,
+    "qubit_time": 124024602624,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794441698
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr9-286e36a3ba9f"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr10-0e70e4252785",
+    "round_id": 13,
+    "evaluation": "eval-f1b7017d0bdd91f6",
+    "lowered_t": 22442189,
+    "qubit_time": 113577093630,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794262151
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr9-286e36a3ba9f"
+   ],
+   "pst_day": "2026-11-09"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr11-aa4faf39addb",
+    "round_id": 14,
+    "evaluation": "eval-53d09280a14a196e",
+    "lowered_t": 22948282,
+    "qubit_time": 24747912448,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794264625
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr6-2e3eece91696"
+   ],
+   "pst_day": "2026-11-09"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr24-5196ed16aea4",
+    "round_id": 25,
+    "evaluation": "eval-6d08662f306f9c7d",
+    "lowered_t": 24310230,
+    "qubit_time": 21253748388,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794400956
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr11-aa4faf39addb"
+   ],
+   "pst_day": "2026-11-11"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr7-cd542f862356",
+    "round_id": 10,
+    "evaluation": "eval-ccec340cdac0e117",
+    "lowered_t": 43753913,
+    "qubit_time": 12128257126,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794144163
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr2-0927a5b09823"
+   ],
+   "pst_day": "2026-11-08"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr13-d29886e23b3c",
+    "round_id": 16,
+    "evaluation": "eval-df8f38b92a52413b",
+    "lowered_t": 45182837,
+    "qubit_time": 9041288750,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794266995
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "mike/comp-ab-godder-pr8-c4994f3b4b23",
+    "jack/comp-iwnlcern-pr7-cd542f862356"
+   ],
+   "pst_day": "2026-11-09"
+  },
+  {
+   "entry": {
+    "user": "aodhfionn",
+    "method": "comp-abdowns-pr17-5e2669d9d3d0",
+    "round_id": 18,
+    "evaluation": "eval-427936a5f00ec7b9",
+    "lowered_t": 50383011,
+    "qubit_time": 4075986215,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794306560
+   },
+   "layer": 3,
+   "note": "filed",
+   "built_on": [
+    "elliot/comp-2elliot-pr12-b2284da7c963"
+   ],
+   "pst_day": "2026-11-10"
+  },
+  {
+   "entry": {
+    "user": "aodhfionn",
+    "method": "comp-abdowns-pr14-87074c1cc523",
+    "round_id": 17,
+    "evaluation": "eval-a902050998613c7e",
+    "lowered_t": 22349565,
+    "qubit_time": 146489040896,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794293659
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr10-0e70e4252785"
+   ],
+   "pst_day": "2026-11-09"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr9-286e36a3ba9f",
+    "round_id": 12,
+    "evaluation": "eval-19d702a0bcd497a5",
+    "lowered_t": 22452885,
+    "qubit_time": 113614265325,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794193281
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr6-2e3eece91696"
+   ],
+   "pst_day": "2026-11-08"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr6-2e3eece91696",
+    "round_id": 9,
+    "evaluation": "eval-a01d984c24782e7f",
+    "lowered_t": 23099461,
+    "qubit_time": 46341304268,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794142047
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr2-0927a5b09823"
+   ],
+   "pst_day": "2026-11-08"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr3-deeeaabcc714",
+    "round_id": 6,
+    "evaluation": "eval-57fe02f6b2a01cb5",
+    "lowered_t": 23111669,
+    "qubit_time": 44995768804,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794091593
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr2-0927a5b09823"
+   ],
+   "pst_day": "2026-11-07"
+  },
+  {
+   "entry": {
+    "user": "elliot",
+    "method": "comp-2elliot-pr4-ac94b30f7028",
+    "round_id": 7,
+    "evaluation": "eval-87f26ddd27762b0d",
+    "lowered_t": 27657245,
+    "qubit_time": 34524496944,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794099150
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr2-0927a5b09823",
+    "elliot/comp-2elliot-pr3-deeeaabcc714"
+   ],
+   "pst_day": "2026-11-07"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr5-9b4c004cf100",
+    "round_id": 8,
+    "evaluation": "eval-f1226bb961ec6349",
+    "lowered_t": 44451029,
+    "qubit_time": 29025963656,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794122996
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "elliot/comp-2elliot-pr4-ac94b30f7028"
+   ],
+   "pst_day": "2026-11-07"
+  },
+  {
+   "entry": {
+    "user": "mike",
+    "method": "comp-ab-godder-pr8-c4994f3b4b23",
+    "round_id": 11,
+    "evaluation": "eval-678b9a6b6aa5fe91",
+    "lowered_t": 50413517,
+    "qubit_time": 7909085166,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794172497
+   },
+   "layer": 4,
+   "note": "filed",
+   "built_on": [
+    "jack/comp-iwnlcern-pr7-cd542f862356"
+   ],
+   "pst_day": "2026-11-08"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr2-0927a5b09823",
+    "round_id": 5,
+    "evaluation": "eval-15e9f81c5eb98eb8",
+    "lowered_t": 23111977,
+    "qubit_time": 46375510706,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794081763
+   },
+   "layer": 5,
+   "note": "filed",
+   "built_on": [
+    "reference-c4"
+   ],
+   "pst_day": "2026-11-07"
+  }
+ ],
+ "baseline": [
+  {
+   "entry": {
+    "user": "operator-check",
+    "method": "reference-c4",
+    "round_id": 2,
+    "evaluation": "eval-6d612fd4c6156cdb",
+    "lowered_t": 50465933,
+    "qubit_time": 164135627418,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1793961043
+   },
+   "layer": 0,
+   "note": "not checked",
+   "built_on": [],
+   "pst_day": "2026-11-06"
+  }
+ ],
+ "unranked": [
+  {
+   "entry": {
+    "user": "operator-check",
+    "method": "first-check",
+    "round_id": 1,
+    "evaluation": "eval-c0f8c6ca8d85f396",
+    "lowered_t": null,
+    "qubit_time": null,
+    "f": 10000,
+    "n": null,
+    "boundary_failing": 10,
+    "terminal": null,
+    "state": "FAILED",
+    "published_at": 1793959692
+   },
+   "pst_day": "2026-11-06",
+   "reason": "BASELINE_FAILED"
+  },
+  {
+   "entry": {
+    "user": "operator-check",
+    "method": "network-test-1794006923",
+    "round_id": 3,
+    "evaluation": "eval-ed7c331755dfb64b",
+    "lowered_t": null,
+    "qubit_time": null,
+    "f": 10000,
+    "n": null,
+    "boundary_failing": 10,
+    "terminal": null,
+    "state": "FAILED",
+    "published_at": 1794007583
+   },
+   "pst_day": "2026-11-06",
+   "reason": "BASELINE_FAILED"
+  },
+  {
+   "entry": {
+    "user": "jude",
+    "method": "version-4",
+    "round_id": 4,
+    "evaluation": "eval-d1da17b8d9810739",
+    "lowered_t": 35589806,
+    "qubit_time": 107732691059,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794019577
+   },
+   "pst_day": "2026-11-06",
+   "reason": "PRACTICE"
+  },
+  {
+   "entry": {
+    "user": "jack",
+    "method": "comp-iwnlcern-pr46-c1ac659af468",
+    "round_id": 42,
+    "evaluation": "eval-59ccd89b5830fa90",
+    "lowered_t": 50309959,
+    "qubit_time": 2870544776,
+    "f": 0,
+    "n": 10000,
+    "boundary_failing": 0,
+    "terminal": null,
+    "state": "PASSED",
+    "published_at": 1794556742
+   },
+   "pst_day": "2026-11-12",
+   "reason": "OUTSIDE"
+  }
+ ]
+}

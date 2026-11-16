@@ -26,6 +26,9 @@ REASONS = {
     "NO_NOTE": "no valid note",
 }
 HIDDEN_REASONS = {"BASELINE_FAILED", "PRACTICE"}
+FINAL_NOTE = "Final. The audit ran every picked entry on 100 inputs from drand round 33917792. All 20 passed, so both award holders above stand."
+FINAL_SOURCE = f'This is the board as read after the close, with every note checked against the archive, the <a href="{REPO}/tree/competition-archive">competition-archive</a> branch. Entries made after the close aren&#x27;t shown here.'
+
 STYLE = """
 :root{--bg:#fbfbfa;--fg:#1c1c1a;--muted:#6b6b66;--line:#e2e1dc;--card:#fff;--good:#1a7f4b;--accent:#2457c5}
 @media (prefers-color-scheme:dark){:root{--bg:#141413;--fg:#ecebe6;--muted:#9a9a93;--line:#2e2e2b;--card:#1c1c1a;--good:#4cc38a;--accent:#8ab0ff}}
@@ -334,7 +337,10 @@ def page(data, now):
     line = data["baseline"][0]["entry"]
     ranked = data["ranked"]
     words = f"{CLOSE:%A %Y-%m-%d, %I:%M %p %Z}"
-    if data["phase"] == "closed":
+    final = data["phase"] == "closed" and data.get("notes_checked")
+    if final:
+        status = f"Closed {words}. Final standings, audited Saturday 2026-11-14"
+    elif data["phase"] == "closed":
         status = f"Closed {words}"
     else:
         state = {"before": "Not open yet", "open": "Open"}.get(data["phase"], data["phase"])
@@ -342,16 +348,16 @@ def page(data, now):
     stamp = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="300"><title>Circuit competition</title><style>{STYLE}</style></head><body><main>
+{"" if final else '<meta http-equiv="refresh" content="300">'}<title>Circuit competition</title><style>{STYLE}</style></head><body><main>
 <div class="top">
 <div>
 <h1>Circuit competition</h1>
-<p class="sub">{status}. Updated <time class="when" data-age datetime="{stamp}">{stamp}</time>.</p>
+<p class="sub">{status}.{"" if final else f' Updated <time class="when" data-age datetime="{stamp}">{stamp}</time>.'}</p>
 </div>
 <a href="https://qcb.berkeley.edu" class="brand" aria-label="Quantum Computing at Berkeley"><img src="logo.png" alt="Quantum Computing at Berkeley"></a>
 </div>
 <div class="cards">{award_card("Holding Lowest T", holder(ranked, line, "lowered_t"), "lowered_t")}{award_card("Holding Lowest qubit-time", holder(ranked, line, "qubit_time"), "qubit_time")}</div>
-<p class="note">Nothing is final until the audit after the close, which can drop an entry.</p>
+<p class="note">{FINAL_NOTE if final else "Nothing is final until the audit after the close, which can drop an entry."}</p>
 <h2>Line to beat</h2>
 <p class="num">The reference: T {number(line["lowered_t"])}, qubit-time {number(line["qubit_time"])}. To beat it, an entry must be lower on one cost and no higher on the other.</p>
 <h2>Frontier</h2>
@@ -361,7 +367,7 @@ def page(data, now):
 <div class="split">{ranked_table(ranked, line, "lowered_t", "By T")}{ranked_table(ranked, line, "qubit_time", "By qubit-time")}</div>
 {"<p class=note>Grey rows don't beat the reference, so they can't hold an award.</p>" if any(not beats(row["entry"], line) for row in ranked) else ""}
 {unranked_section(data["unranked"])}
-<p class="note">Sampled and unqualified: one controlled addition, not an attack. Read from <a href="{html.escape(data["url"])}/v2/tested">the public board</a> by <a href="https://github.com/jtaroreh/ecdsabreak-leaderboard/blob/main/standings.py">standings.py</a>. Notes aren't checked here, so the operator's final table decides. Enter at <a href="{REPO}">the reference repository</a>.</p>
+<p class="note">Sampled and unqualified: one controlled addition, not an attack. {FINAL_SOURCE if final else f'Read from <a href="{html.escape(data["url"])}/v2/tested">the public board</a> by <a href="https://github.com/jtaroreh/ecdsabreak-leaderboard/blob/main/standings.py">standings.py</a>. Notes aren&#x27;t checked here, so the operator&#x27;s final table decides. Enter at <a href="{REPO}">the reference repository</a>.'}</p>
 </main><script>{AGE_SCRIPT}</script></body></html>
 """
 
